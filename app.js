@@ -1,4 +1,6 @@
 const chars = ["0", "1"];
+const timer = 100;
+const endChar = `|`;
 
 let allChar = new String();
 
@@ -14,13 +16,12 @@ const getChar = (num) => {
 };
 
 const main = () => {
-  const firstChar = `______________________________________________________________________________________________________\n`;
-  const twoChar = new Array();
+  const Char = new Array();
   for (let i = 0; i < process.stdout.rows - 1; i++) {
-    twoChar.push(`|${getChar(process.stdout.columns - 4)}|\n`);
+    Char.push(`${endChar}${getChar(process.stdout.columns - 4)}${endChar}\n`);
     allChar = "";
   }
-  const thisAll = `${twoChar.join("")}`;
+  const thisAll = `${Char.join("")}`;
   return thisAll;
 };
 
@@ -28,14 +29,13 @@ const main = () => {
   setInterval(() => {
     process.stdout.write("\x1Bc");
     process.stdout.write(`\u001b[32;40m${main()}`);
-  }, 100);
+  }, timer);
   process.on("SIGINT", () => {
     process.stdout.write(`\u001b[0m`);
     process.stdout.clearLine();
     process.stdout.cursorTo(0);
     process.stdout.write(`\u001b[31;107mhttps://github.com/hamidreza01`);
-    process.stdout.write(`\u001b[0m`);
-    process.stdout.write(`\n`);
+    process.stdout.write(`\u001b[0m\n`);
     process.exit(0);
   });
 })();
