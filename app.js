@@ -2,6 +2,17 @@ const chars = ["0", "1"];
 const timer = 100;
 const endChar = `|`;
 
+// you can change color
+
+const colors = {
+  green: `\u001b[32;40m`,
+  red: `\u001b[31;40m`,
+  yellow: `\u001b[33;40m`,
+  purple: `\u001b[35;40m`,
+  blue: `\u001b[34;40m`,
+  white: `\u001b[10;40m`,
+};
+const color = colors.white;
 let allChar = new String();
 
 const random = (min, max) => {
@@ -28,7 +39,7 @@ const main = () => {
 (() => {
   setInterval(() => {
     process.stdout.write("\x1Bc");
-    process.stdout.write(`\u001b[32;40m${main()}`);
+    process.stdout.write(`${color}${main()}`);
   }, timer);
   process.on("SIGINT", () => {
     process.stdout.write(`\u001b[0m`);
