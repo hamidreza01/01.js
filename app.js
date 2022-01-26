@@ -12,7 +12,7 @@ const colors = {
   blue: `\u001b[34;40m`,
   white: `\u001b[10;40m`,
 };
-const color = colors.white;
+const color = colors.green;
 let allChar = new String();
 
 const random = (min, max) => {
